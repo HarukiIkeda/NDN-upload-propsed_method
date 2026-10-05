@@ -1,0 +1,76 @@
+services:
+  # --- コンシューマー ---
+  consumer:
+    build: .
+    stop_grace_period: 1s
+    privileged: true
+    environment:
+      - CHUNK_SIZE=${CHUNK_SIZE:-50}
+      - LOSS_RATE=${LOSS_RATE:-0}
+      - LOSS_RATE=${LOSS_RATE:-0}
+    networks:
+      - net_cg
+    cap_add:
+      - NET_ADMIN
+    command: >
+      bash -c "tc qdisc add dev eth0 root netem loss ${LOSS_RATE:-0}% || true &&
+               nfd --config /etc/ndn/nfd.conf 2>&1 & sleep 3 && 
+               nfdc face create udp://gateway && 
+               nfdc route add /gateway udp://gateway && 
+               ./consumer"
+
+  # --- ゲートウェイ（境界ノード） ---
+  gateway:
+    build: .
+    stop_grace_period: 1s
+    privileged: true
+    networks:
+      - net_cg
+      - net_gr
+    command: >
+      bash -c "nfd --config /etc/ndn/nfd.conf 2>&1 & sleep 3 && 
+               nfdc face create udp://consumer && 
+               nfdc route add /local/consumer1 udp://consumer && 
+               nfdc face create udp://router && 
+               nfdc route add /producer udp://router && 
+               ./gateway"
+
+  # --- ルータ ---
+  router:
+    build: .
+    stop_grace_period: 1s
+    privileged: true
+    networks:
+      - net_gr
+      - net_rp
+    command: >
+      bash -c "nfd --config /etc/ndn/nfd.conf 2>&1 & sleep 3 && 
+               nfdc face create udp://gateway && nfdc route add /gateway udp://gateway && 
+               nfdc face create udp://producer && nfdc route add /producer udp://producer && 
+               tail -f /dev/null"
+
+  # --- プロデューサー ---
+  producer:
+    build: .
+    stop_grace_period: 1s
+    privileged: true
+    networks:
+      - net_rp
+    environment:
+      - WINDOW_SIZE=20
+    cap_add:
+      - NET_ADMIN
+    command: >
+      bash -c "tc qdisc add dev eth0 root netem loss ${LOSS_RATE:-0}% || true &&
+               nfd --config /etc/ndn/nfd.conf 2>&1 & sleep 3 && 
+               nfdc face create udp://router && nfdc route add /gateway udp://router && 
+               ./producer"
+
+# 隣接関係のみを許可する独立したネットワーク定義
+networks:
+  net_cg:
+    internal: true
+  net_gr:
+    internal: true
+  net_rp:
+    internal: true

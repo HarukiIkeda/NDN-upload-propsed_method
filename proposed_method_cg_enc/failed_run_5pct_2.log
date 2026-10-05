@@ -1,0 +1,143 @@
+=========================================
+ Starting NDN Upload Evaluation...
+=========================================
+[1/3] Building and running containers...
+#1 [internal] load local bake definitions
+#1 reading from stdin 1.95kB done
+#1 DONE 0.0s
+
+#2 [router internal] load build definition from Dockerfile
+#2 DONE 0.0s
+
+#2 [producer internal] load build definition from Dockerfile
+#2 transferring dockerfile: 902B 0.0s done
+#2 DONE 0.0s
+
+#3 [router internal] load metadata for docker.io/library/ubuntu:22.04
+#3 DONE 0.1s
+
+#4 [producer internal] load .dockerignore
+#4 transferring context: 2B done
+#4 DONE 0.0s
+
+#5 [consumer 1/7] FROM docker.io/library/ubuntu:22.04@sha256:0e0a0fc6d18feda9db1590da249ac93e8d5abfea8f4c3c0c849ce512b5ef8982
+#5 resolve docker.io/library/ubuntu:22.04@sha256:0e0a0fc6d18feda9db1590da249ac93e8d5abfea8f4c3c0c849ce512b5ef8982 0.0s done
+#5 DONE 0.0s
+
+#6 [gateway internal] load build context
+#6 transferring context: 65.72kB 0.0s done
+#6 DONE 0.0s
+
+#7 [router 2/7] RUN apt-get update &&     apt-get install -y software-properties-common &&     add-apt-repository ppa:named-data/ppa &&     apt-get update &&     apt-get install -y nfd ndn-tools python3 python3-pip iproute2                        build-essential cmake libndn-cxx-dev                        libssl-dev nlohmann-json3-dev pkg-config &&     rm -rf /var/lib/apt/lists/*
+#7 CACHED
+
+#8 [router 3/7] RUN pip3 install python-ndn cryptography
+#8 CACHED
+
+#9 [router 4/7] RUN cp /etc/ndn/nfd.conf.sample /etc/ndn/nfd.conf &&     ndnsec key-gen /localhost/operator | ndnsec cert-install -
+#9 CACHED
+
+#10 [consumer 5/7] WORKDIR /app
+#10 CACHED
+
+#11 [consumer 6/7] COPY . /app
+#11 DONE 0.0s
+
+#12 [consumer 7/7] RUN cmake . && make
+#12 0.324 -- The CXX compiler identification is GNU 11.4.0
+#12 0.338 -- Detecting CXX compiler ABI info
+#12 0.447 -- Detecting CXX compiler ABI info - done
+#12 0.458 -- Check for working CXX compiler: /usr/bin/c++ - skipped
+#12 0.458 -- Detecting CXX compile features
+#12 0.459 -- Detecting CXX compile features - done
+#12 0.469 -- Found PkgConfig: /usr/bin/pkg-config (found version "0.29.2") 
+#12 0.469 -- Checking for module 'libndn-cxx'
+#12 0.482 --   Found libndn-cxx, version 0.8.1
+#12 0.564 -- Found OpenSSL: /usr/lib/x86_64-linux-gnu/libcrypto.so (found version "3.0.2")  
+#12 0.565 -- Configuring done
+#12 0.575 -- Generating done
+#12 0.576 -- Build files have been written to: /app
+#12 0.618 [ 12%] Building CXX object CMakeFiles/crypto_utils.dir/crypto_utils.cpp.o
+#12 1.067 [ 25%] Linking CXX static library libcrypto_utils.a
+#12 1.102 [ 25%] Built target crypto_utils
+#12 1.124 [ 37%] Building CXX object CMakeFiles/consumer.dir/consumer.cpp.o
+#12 4.908 [ 50%] Linking CXX executable consumer
+#12 5.050 [ 50%] Built target consumer
+#12 5.068 [ 62%] Building CXX object CMakeFiles/gateway.dir/gateway.cpp.o
+#12 9.383 [ 75%] Linking CXX executable gateway
+#12 9.559 [ 75%] Built target gateway
+#12 9.578 [ 87%] Building CXX object CMakeFiles/producer.dir/producer.cpp.o
+#12 13.41 [100%] Linking CXX executable producer
+#12 13.57 [100%] Built target producer
+#12 DONE 13.6s
+
+#13 [consumer] exporting to image
+#13 exporting layers
+#13 exporting layers 0.4s done
+#13 exporting manifest sha256:623b96649dd7f5b026b0bab164e6938d38f34983d952df9f006593f3033d8cfe 0.1s done
+#13 exporting config sha256:8efdc5c052bd9c6087f4a889c50486892f863d86626a6326fa4702ca41a7c260
+#13 exporting config sha256:8efdc5c052bd9c6087f4a889c50486892f863d86626a6326fa4702ca41a7c260 0.1s done
+#13 exporting attestation manifest sha256:b7046a4f6e78541c1ac2f0d740c0c169c263c957ead403013a7f8a9cb282dea5
+#13 exporting attestation manifest sha256:b7046a4f6e78541c1ac2f0d740c0c169c263c957ead403013a7f8a9cb282dea5 0.1s done
+#13 exporting manifest list sha256:3a770a1b881d7ecd18e1d82daefd331844c721327a5c16d9739ac7a88259d919 0.1s done
+#13 naming to docker.io/library/proposed_method-consumer:latest 0.0s done
+#13 unpacking to docker.io/library/proposed_method-consumer:latest
+#13 unpacking to docker.io/library/proposed_method-consumer:latest 0.1s done
+#13 ERROR: failed to prepare extraction snapshot "extract-935382584-minP sha256:a8273fabcda46d81448016c9a5808f99a0317bc8cfcadec5a494d7d4c80d31ca": parent snapshot sha256:43339b11359d977e018d3af1da1521c3ac489b1eafaa8d2bebef816a4e6d9d1f does not exist: not found
+
+#14 [producer] exporting to image
+#14 exporting layers 0.4s done
+#14 exporting manifest sha256:2bd23a75041d49d6a1caa2c4f75b547449ea1e65c0627d2217b756da19f95b66 0.0s done
+#14 exporting config sha256:921289479178dc5aee58170b3f97270ef0784685bf605edd8964e826093b1c20 0.1s done
+#14 exporting attestation manifest sha256:016ce6545b94c586095e80af01edb5884e6ce979812ba2b39c8d6f9b237ed5bf 0.1s done
+#14 exporting manifest list sha256:e84cb29f8c52ff9500488497df65704d73d0564323180ef6a8a68165ab205c63 0.1s done
+#14 naming to docker.io/library/proposed_method-producer:latest 0.0s done
+#14 unpacking to docker.io/library/proposed_method-producer:latest 0.1s done
+#14 ERROR: failed to prepare extraction snapshot "extract-931492527-mmVj sha256:a8273fabcda46d81448016c9a5808f99a0317bc8cfcadec5a494d7d4c80d31ca": parent snapshot sha256:43339b11359d977e018d3af1da1521c3ac489b1eafaa8d2bebef816a4e6d9d1f does not exist: not found
+
+#15 [router] exporting to image
+#15 exporting layers 0.4s done
+#15 exporting manifest sha256:a2ed987d284a95faa00e3c156103c42ebc91fee530a25a2470f010dc45e88eac 0.0s done
+#15 exporting config sha256:2e200206f50a5eb4d53cd2075c74290aa2b6d0907f9bf8307f9e289a93eb5c1c 0.1s done
+#15 exporting attestation manifest sha256:e20bb7d40ef3f24d86f9c26f3eb71dd7ce8e1fb3b5716f581e38b306b6b77b33 0.1s done
+#15 exporting manifest list sha256:dd77f04899f1dd49e6d8346dcffb480b3aec2dd3290b8d1b487529359608d889 0.1s done
+#15 naming to docker.io/library/proposed_method-router:latest 0.0s done
+#15 unpacking to docker.io/library/proposed_method-router:latest 0.1s done
+#15 ERROR: failed to prepare extraction snapshot "extract-935713051-2LbO sha256:a8273fabcda46d81448016c9a5808f99a0317bc8cfcadec5a494d7d4c80d31ca": parent snapshot sha256:43339b11359d977e018d3af1da1521c3ac489b1eafaa8d2bebef816a4e6d9d1f does not exist: not found
+
+#16 [gateway] exporting to image
+#16 exporting layers 0.4s done
+#16 exporting manifest sha256:24d42c4a453737c6192c0bd054d89ea546ceaddcc153148d9a685e5b1fd35574 0.1s done
+#16 exporting config sha256:86265c150951e2e9ee96a3251747fb716347a67ecb3d8abd5b30fa00728c4e56 0.1s done
+#16 exporting attestation manifest sha256:963a3f59d24296ee5fe28c9adbc024a427f0433ae23bbbf963fd48929d5b6185 0.1s done
+#16 exporting manifest list sha256:a78dfa621d9a21cf5149a6642547ec0518b50a855c4234675e2a9075164b4339 0.1s done
+#16 naming to docker.io/library/proposed_method-gateway:latest 0.0s done
+#16 unpacking to docker.io/library/proposed_method-gateway:latest 0.1s done
+#16 ERROR: failed to prepare extraction snapshot "extract-939821158-lYSP sha256:a8273fabcda46d81448016c9a5808f99a0317bc8cfcadec5a494d7d4c80d31ca": parent snapshot sha256:43339b11359d977e018d3af1da1521c3ac489b1eafaa8d2bebef816a4e6d9d1f does not exist: not found
+------
+ > [router] exporting to image:
+------
+------
+ > [producer] exporting to image:
+------
+------
+ > [gateway] exporting to image:
+------
+------
+ > [consumer] exporting to image:
+------
+[2/3] Extracting and sorting logs...
+[3/3] Displaying time-ordered logs:
+
+------------------------------------------------------------------------
+------------------------------------------------------------------------
+
+=========================================
+ Evaluation Complete! (Logs are also saved in 'sorted_logs.txt')
+=========================================
+
+>>> UPLOAD COMPLETION TIME RESULT <<<
+Result not found. Check logs.
+=========================================
+target producer: failed to solve: failed to prepare extraction snapshot "extract-931492527-mmVj sha256:a8273fabcda46d81448016c9a5808f99a0317bc8cfcadec5a494d7d4c80d31ca": parent snapshot sha256:43339b11359d977e018d3af1da1521c3ac489b1eafaa8d2bebef816a4e6d9d1f does not exist: not found
+

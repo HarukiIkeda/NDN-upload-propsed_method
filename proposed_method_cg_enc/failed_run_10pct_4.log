@@ -1,0 +1,156 @@
+=========================================
+ Starting NDN Upload Evaluation...
+=========================================
+[1/3] Building and running containers...
+#1 [internal] load local bake definitions
+#1 reading from stdin 1.95kB done
+#1 DONE 0.0s
+
+#2 [gateway 1/7] FROM docker.io/library/ubuntu:22.04@sha256:0e0a0fc6d18feda9db1590da249ac93e8d5abfea8f4c3c0c849ce512b5ef8982
+#2 resolve docker.io/library/ubuntu:22.04@sha256:0e0a0fc6d18feda9db1590da249ac93e8d5abfea8f4c3c0c849ce512b5ef8982 0.0s done
+#2 DONE 0.0s
+
+#3 [gateway 2/7] RUN apt-get update &&     apt-get install -y software-properties-common &&     add-apt-repository ppa:named-data/ppa &&     apt-get update &&     apt-get install -y nfd ndn-tools python3 python3-pip iproute2                        build-essential cmake libndn-cxx-dev                        libssl-dev nlohmann-json3-dev pkg-config &&     rm -rf /var/lib/apt/lists/*
+#3 CACHED
+
+#4 [gateway 3/7] RUN pip3 install python-ndn cryptography
+#4 CACHED
+
+#5 [gateway 4/7] RUN cp /etc/ndn/nfd.conf.sample /etc/ndn/nfd.conf &&     ndnsec key-gen /localhost/operator | ndnsec cert-install -
+#5 CACHED
+
+#6 [gateway 5/7] WORKDIR /app
+#6 CACHED
+
+#7 [router 6/7] COPY . /app
+#7 DONE 0.0s
+
+#8 [gateway internal] load build definition from Dockerfile
+#8 transferring dockerfile: 902B done
+#8 DONE 0.0s
+
+#9 [producer internal] load metadata for docker.io/library/ubuntu:22.04
+#9 DONE 0.0s
+
+#10 [gateway internal] load .dockerignore
+#10 transferring context: 2B done
+#10 DONE 0.0s
+
+#11 [consumer internal] load build context
+#11 transferring context: 32.83kB done
+#11 DONE 0.0s
+
+#12 [router 7/7] RUN cmake . && make
+#12 0.317 -- The CXX compiler identification is GNU 11.4.0
+#12 0.331 -- Detecting CXX compiler ABI info
+#12 0.429 -- Detecting CXX compiler ABI info - done
+#12 0.439 -- Check for working CXX compiler: /usr/bin/c++ - skipped
+#12 0.439 -- Detecting CXX compile features
+#12 0.441 -- Detecting CXX compile features - done
+#12 0.448 -- Found PkgConfig: /usr/bin/pkg-config (found version "0.29.2") 
+#12 0.448 -- Checking for module 'libndn-cxx'
+#12 0.459 --   Found libndn-cxx, version 0.8.1
+#12 0.553 -- Found OpenSSL: /usr/lib/x86_64-linux-gnu/libcrypto.so (found version "3.0.2")  
+#12 0.553 -- Configuring done
+#12 0.563 -- Generating done
+#12 0.564 -- Build files have been written to: /app
+#12 0.609 [ 12%] Building CXX object CMakeFiles/crypto_utils.dir/crypto_utils.cpp.o
+#12 1.065 [ 25%] Linking CXX static library libcrypto_utils.a
+#12 1.092 [ 25%] Built target crypto_utils
+#12 1.110 [ 37%] Building CXX object CMakeFiles/consumer.dir/consumer.cpp.o
+#12 4.657 [ 50%] Linking CXX executable consumer
+#12 4.837 [ 50%] Built target consumer
+#12 4.857 [ 62%] Building CXX object CMakeFiles/gateway.dir/gateway.cpp.o
+#12 8.844 [ 75%] Linking CXX executable gateway
+#12 9.012 [ 75%] Built target gateway
+#12 9.029 [ 87%] Building CXX object CMakeFiles/producer.dir/producer.cpp.o
+#12 12.58 [100%] Linking CXX executable producer
+#12 12.76 [100%] Built target producer
+#12 DONE 12.8s
+
+#13 [producer] exporting to image
+#13 exporting layers
+#13 exporting layers 0.4s done
+#13 exporting manifest sha256:dde790a310259530d3e39912e90f13704b3a16ce061a84378dc30a91de68aacb
+#13 exporting manifest sha256:dde790a310259530d3e39912e90f13704b3a16ce061a84378dc30a91de68aacb 1.8s done
+#13 exporting config sha256:b40156ea91a58dd3d22572aca5cb500df7d7dc23b46bfad94fa7d1276269c979
+#13 exporting config sha256:b40156ea91a58dd3d22572aca5cb500df7d7dc23b46bfad94fa7d1276269c979 1.5s done
+#13 exporting attestation manifest sha256:a32d03db5e499e899cb81e27d1eb504f965b333f2c12ce0cf255fb01be4a84ae
+#13 exporting attestation manifest sha256:a32d03db5e499e899cb81e27d1eb504f965b333f2c12ce0cf255fb01be4a84ae 0.2s done
+#13 exporting manifest list sha256:9fcb2a5b5926a9ff0d1c77eff43526ecc9538a1783e97c6c870870ec69111ee8
+#13 exporting manifest list sha256:9fcb2a5b5926a9ff0d1c77eff43526ecc9538a1783e97c6c870870ec69111ee8 0.1s done
+#13 naming to docker.io/library/proposed_method-producer:latest 0.0s done
+#13 unpacking to docker.io/library/proposed_method-producer:latest
+#13 unpacking to docker.io/library/proposed_method-producer:latest 0.2s done
+#13 DONE 4.5s
+
+#14 [router] exporting to image
+#14 exporting layers 0.4s done
+#14 exporting manifest sha256:4997a88642823b1410175366268ea75c6ca1aeda62b5756a30b81ac039278342 1.9s done
+#14 exporting config sha256:e9b402af85c4345723ab9d5e50b4e32505b28e23341f408596e841996156c034 1.5s done
+#14 exporting attestation manifest sha256:ebc60b5b56110937c608ad6519785ec50a9b6533167cbe79084b456e70e29af7 0.2s done
+#14 exporting manifest list sha256:a078029fbeace44566440701e0ab6ed2820a31711548849ffd4d62f2bb3bbf7f 0.1s done
+#14 naming to docker.io/library/proposed_method-router:latest 0.0s done
+#14 unpacking to docker.io/library/proposed_method-router:latest 0.2s done
+#14 DONE 4.5s
+
+#15 [gateway] exporting to image
+#15 exporting layers 0.4s done
+#15 exporting manifest sha256:903d4fb5fff8199c662784e851798c2e98c640bd16e847605a19676c5af12eed 2.0s done
+#15 exporting config sha256:3ff2b3aec3f3da212d5fee95e424ec7c528dbb3361990b6045f0bcf1c92c2ded 1.4s done
+#15 exporting attestation manifest sha256:baf66c58350705c2ce067ac42753f0e2c4d096ff6a0317d21ceced38e22c736c 0.2s done
+#15 exporting manifest list sha256:08a4d1ff47ba069a9499a5c70f4b2b2b60a4809ac328fa8c8edfe590e80406c5 0.1s done
+#15 naming to docker.io/library/proposed_method-gateway:latest 0.0s done
+#15 unpacking to docker.io/library/proposed_method-gateway:latest 0.2s done
+#15 DONE 4.6s
+
+#16 [consumer] exporting to image
+#16 exporting layers 0.4s done
+#16 exporting manifest sha256:41b1436876dae83aa26e11ebb64ceb7f4ae79cf51780929378fae24c191505c8 1.9s done
+#16 exporting config sha256:b780feac70c8f3645ee7e23ea7a275c08c01ecf8eddb5eaa99d333020afa0f1e 1.5s done
+#16 exporting attestation manifest sha256:a780d4aee194985c43e4c8e9166e0841e19ae1afc9eee5164d06597c6c0c1232 0.2s done
+#16 exporting manifest list sha256:0f81e5772222d39b263a19ca8e276fd63a3aff97e40cf7867a5980b6bfc6853d 0.1s done
+#16 naming to docker.io/library/proposed_method-consumer:latest 0.0s done
+#16 unpacking to docker.io/library/proposed_method-consumer:latest 0.2s done
+#16 DONE 4.6s
+
+#17 [gateway] resolving provenance for metadata file
+#17 DONE 0.0s
+
+#18 [producer] resolving provenance for metadata file
+#18 DONE 0.0s
+
+#19 [router] resolving provenance for metadata file
+#19 DONE 0.0s
+
+#20 [consumer] resolving provenance for metadata file
+#20 DONE 0.0s
+[2/3] Extracting and sorting logs...
+[3/3] Displaying time-ordered logs:
+
+------------------------------------------------------------------------
+------------------------------------------------------------------------
+
+=========================================
+ Evaluation Complete! (Logs are also saved in 'sorted_logs.txt')
+=========================================
+
+>>> UPLOAD COMPLETION TIME RESULT <<<
+Result not found. Check logs.
+=========================================
+ proposed_method-router  Built
+ proposed_method-consumer  Built
+ proposed_method-gateway  Built
+ proposed_method-producer  Built
+ Network proposed_method_net_gr  Creating
+ Network proposed_method_net_gr  Error
+ Network proposed_method_net_cg  Creating
+ Network proposed_method_net_cg  Error
+ Network proposed_method_net_rp  Creating
+ Network proposed_method_net_rp  Error
+ Container consumer  Creating
+ Container producer  Creating
+ Container router  Creating
+ Container gateway  Creating
+ Container router  Error response from daemon: Conflict. The container name "/router" is already in use by container "4e8490fdb8ee3b0715e14d7475c161682eb0ed0177a45a2fb77d5d933c31af36". You have to remove (or rename) that container to be able to reuse that name.
+Error response from daemon: Conflict. The container name "/router" is already in use by container "4e8490fdb8ee3b0715e14d7475c161682eb0ed0177a45a2fb77d5d933c31af36". You have to remove (or rename) that container to be able to reuse that name.

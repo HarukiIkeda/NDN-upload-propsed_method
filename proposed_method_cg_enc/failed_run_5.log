@@ -1,0 +1,25 @@
+=========================================
+ Starting NDN Upload Evaluation...
+=========================================
+[1/3] Building and running containers...
+
+The command 'docker-compose' could not be found in this WSL 2 distro.
+We recommend to activate the WSL integration in Docker Desktop settings.
+
+For details about using Docker Desktop with WSL 2, visit:
+
+https://docs.docker.com/go/wsl2/
+
+[2/3] Extracting and sorting logs...
+[3/3] Displaying time-ordered logs:
+
+------------------------------------------------------------------------
+------------------------------------------------------------------------
+
+=========================================
+ Evaluation Complete! (Logs are also saved in 'sorted_logs.txt')
+=========================================
+
+>>> UPLOAD COMPLETION TIME RESULT <<<
+Result not found. Check logs.
+=========================================

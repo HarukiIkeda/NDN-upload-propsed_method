@@ -1,0 +1,144 @@
+=========================================
+ Starting NDN Upload Evaluation...
+=========================================
+[1/3] Building and running containers...
+#1 [internal] load local bake definitions
+#1 reading from stdin 1.95kB done
+#1 DONE 0.0s
+
+#2 [gateway internal] load build definition from Dockerfile
+#2 transferring dockerfile: 902B done
+#2 DONE 0.0s
+
+#3 [gateway internal] load metadata for docker.io/library/ubuntu:22.04
+#3 DONE 0.0s
+
+#4 [router internal] load .dockerignore
+#4 transferring context: 2B done
+#4 DONE 0.0s
+
+#5 [producer internal] load build context
+#5 DONE 0.0s
+
+#6 [producer 1/7] FROM docker.io/library/ubuntu:22.04@sha256:0e0a0fc6d18feda9db1590da249ac93e8d5abfea8f4c3c0c849ce512b5ef8982
+#6 resolve docker.io/library/ubuntu:22.04@sha256:0e0a0fc6d18feda9db1590da249ac93e8d5abfea8f4c3c0c849ce512b5ef8982 0.0s done
+#6 resolve docker.io/library/ubuntu:22.04@sha256:0e0a0fc6d18feda9db1590da249ac93e8d5abfea8f4c3c0c849ce512b5ef8982 0.0s done
+#6 DONE 0.0s
+
+#5 [producer internal] load build context
+#5 transferring context: 86.33kB 0.0s done
+#5 DONE 0.0s
+
+#7 [producer 2/7] RUN apt-get update &&     apt-get install -y software-properties-common &&     add-apt-repository ppa:named-data/ppa &&     apt-get update &&     apt-get install -y nfd ndn-tools python3 python3-pip iproute2                        build-essential cmake libndn-cxx-dev                        libssl-dev nlohmann-json3-dev pkg-config &&     rm -rf /var/lib/apt/lists/*
+#7 CACHED
+
+#8 [producer 3/7] RUN pip3 install python-ndn cryptography
+#8 CACHED
+
+#9 [producer 4/7] RUN cp /etc/ndn/nfd.conf.sample /etc/ndn/nfd.conf &&     ndnsec key-gen /localhost/operator | ndnsec cert-install -
+#9 CACHED
+
+#10 [producer 5/7] WORKDIR /app
+#10 CACHED
+
+#11 [producer 6/7] COPY . /app
+#11 DONE 0.0s
+
+#12 [consumer 7/7] RUN cmake . && make
+#12 0.309 -- The CXX compiler identification is GNU 11.4.0
+#12 0.318 -- Detecting CXX compiler ABI info
+#12 0.409 -- Detecting CXX compiler ABI info - done
+#12 0.418 -- Check for working CXX compiler: /usr/bin/c++ - skipped
+#12 0.419 -- Detecting CXX compile features
+#12 0.420 -- Detecting CXX compile features - done
+#12 0.426 -- Found PkgConfig: /usr/bin/pkg-config (found version "0.29.2") 
+#12 0.427 -- Checking for module 'libndn-cxx'
+#12 0.436 --   Found libndn-cxx, version 0.8.1
+#12 0.540 -- Found OpenSSL: /usr/lib/x86_64-linux-gnu/libcrypto.so (found version "3.0.2")  
+#12 0.541 -- Configuring done
+#12 0.553 -- Generating done
+#12 0.555 -- Build files have been written to: /app
+#12 0.596 [ 12%] Building CXX object CMakeFiles/crypto_utils.dir/crypto_utils.cpp.o
+#12 1.121 [ 25%] Linking CXX static library libcrypto_utils.a
+#12 1.146 [ 25%] Built target crypto_utils
+#12 1.162 [ 37%] Building CXX object CMakeFiles/consumer.dir/consumer.cpp.o
+#12 4.752 [ 50%] Linking CXX executable consumer
+#12 4.917 [ 50%] Built target consumer
+#12 4.940 [ 62%] Building CXX object CMakeFiles/gateway.dir/gateway.cpp.o
+#12 9.205 [ 75%] Linking CXX executable gateway
+#12 9.373 [ 75%] Built target gateway
+#12 9.388 [ 87%] Building CXX object CMakeFiles/producer.dir/producer.cpp.o
+#12 13.27 [100%] Linking CXX executable producer
+#12 13.45 [100%] Built target producer
+#12 DONE 13.5s
+
+#13 [producer] exporting to image
+#13 exporting layers
+#13 exporting layers 0.4s done
+#13 exporting manifest sha256:98e2607d66a756268fae93a13ceba2a072d489b084be41b94f3254a38d39d735 0.0s done
+#13 exporting config sha256:0cd4cf1ed558e243b3c2063089ede397f6b22ef38e4e276d59e5ff2447f9481d 0.1s done
+#13 exporting attestation manifest sha256:781343deb76320dbe5014999693bc35617b4cc644a62ecdf5e34ad3c680de56c
+#13 exporting attestation manifest sha256:781343deb76320dbe5014999693bc35617b4cc644a62ecdf5e34ad3c680de56c 0.2s done
+#13 exporting manifest list sha256:0b11947eb1f88cd767443276a2a883bb4d2a1ca57e371c18846555d25ea531a8
+#13 exporting manifest list sha256:0b11947eb1f88cd767443276a2a883bb4d2a1ca57e371c18846555d25ea531a8 0.1s done
+#13 naming to docker.io/library/proposed_method-producer:latest
+#13 naming to docker.io/library/proposed_method-producer:latest 0.0s done
+#13 unpacking to docker.io/library/proposed_method-producer:latest 0.1s done
+#13 ERROR: failed to prepare extraction snapshot "extract-861100723-5H52 sha256:1f10073ffec794d8b143328890364f3912723e3775e57fa2b4d385a15e52b37b": parent snapshot sha256:43339b11359d977e018d3af1da1521c3ac489b1eafaa8d2bebef816a4e6d9d1f does not exist: not found
+
+#14 [gateway] exporting to image
+#14 exporting layers 0.4s done
+#14 exporting manifest sha256:736f31bf9df36996df707703f32ec048e0b168e859a4f509d4bdcca990af5a80 0.1s done
+#14 exporting config sha256:a228ac647687ab1bdff36b9d5d3f997700a6f58fc2bd38e9966107c438275e83 0.1s done
+#14 exporting attestation manifest sha256:58f9b000599bac10ea61798195e0dee3e832cf6f642775a8606150db56986e9f 0.2s done
+#14 exporting manifest list sha256:d3e6f55376e757168b91a2267fc66f5036a474d39db83f2cca047847f3209e15 0.1s done
+#14 naming to docker.io/library/proposed_method-gateway:latest 0.0s done
+#14 unpacking to docker.io/library/proposed_method-gateway:latest 0.1s done
+#14 ERROR: failed to prepare extraction snapshot "extract-869288651-j2p4 sha256:1f10073ffec794d8b143328890364f3912723e3775e57fa2b4d385a15e52b37b": parent snapshot sha256:43339b11359d977e018d3af1da1521c3ac489b1eafaa8d2bebef816a4e6d9d1f does not exist: not found
+
+#15 [consumer] exporting to image
+#15 exporting layers 0.4s done
+#15 exporting manifest sha256:a699b2639eec3a34df065251055b6614118f17944ef61a6768e053ddb6251016 0.1s done
+#15 exporting config sha256:07df82c8d1d46ce34247b4b013a98b61568df3388dce5b55e4e17f8bf0022815 0.1s done
+#15 exporting attestation manifest sha256:a5ee43a4fb571d83e0a672f5f6cef0c7fa3ada788ff91ece7249a5b8e1964870 0.2s done
+#15 exporting manifest list sha256:832282ea0c807209cf67390440c0b719dfc51ef9dd7b71152c023661e2b05400 0.1s done
+#15 naming to docker.io/library/proposed_method-consumer:latest 0.0s done
+#15 unpacking to docker.io/library/proposed_method-consumer:latest 0.1s done
+#15 ERROR: failed to prepare extraction snapshot "extract-867359067-fLvA sha256:1f10073ffec794d8b143328890364f3912723e3775e57fa2b4d385a15e52b37b": parent snapshot sha256:43339b11359d977e018d3af1da1521c3ac489b1eafaa8d2bebef816a4e6d9d1f does not exist: not found
+
+#16 [router] exporting to image
+#16 exporting layers 0.4s done
+#16 exporting manifest sha256:c6ae0659fe1141ecd2daa36d6a37f4b19fc5973363c0455d96aa4ef7f5d35be8 0.1s done
+#16 exporting config sha256:d7bfa27ec2e57b80c1a1d3b9483f3d7aa8b6fc1e900116b837346e223784319e 0.1s done
+#16 exporting attestation manifest sha256:4a1ad1a895e3be9ea4e93cba1f4777b5ab94fbae4909276c930b8ee99bfe3530 0.2s done
+#16 exporting manifest list sha256:5ee3beaae409fa379d3d05830b4d56e246e4f35bf514f9c69c38590251e0366f 0.1s done
+#16 naming to docker.io/library/proposed_method-router:latest 0.0s done
+#16 unpacking to docker.io/library/proposed_method-router:latest 0.1s done
+#16 ERROR: failed to prepare extraction snapshot "extract-867448209-z5Zd sha256:1f10073ffec794d8b143328890364f3912723e3775e57fa2b4d385a15e52b37b": parent snapshot sha256:43339b11359d977e018d3af1da1521c3ac489b1eafaa8d2bebef816a4e6d9d1f does not exist: not found
+------
+ > [consumer] exporting to image:
+------
+------
+ > [gateway] exporting to image:
+------
+------
+ > [router] exporting to image:
+------
+------
+ > [producer] exporting to image:
+------
+[2/3] Extracting and sorting logs...
+[3/3] Displaying time-ordered logs:
+
+------------------------------------------------------------------------
+------------------------------------------------------------------------
+
+=========================================
+ Evaluation Complete! (Logs are also saved in 'sorted_logs.txt')
+=========================================
+
+>>> UPLOAD COMPLETION TIME RESULT <<<
+Result not found. Check logs.
+=========================================
+target router: failed to solve: failed to prepare extraction snapshot "extract-867448209-z5Zd sha256:1f10073ffec794d8b143328890364f3912723e3775e57fa2b4d385a15e52b37b": parent snapshot sha256:43339b11359d977e018d3af1da1521c3ac489b1eafaa8d2bebef816a4e6d9d1f does not exist: not found
+

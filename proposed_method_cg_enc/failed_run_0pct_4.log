@@ -1,0 +1,323 @@
+=========================================
+ Starting NDN Upload Evaluation...
+=========================================
+[1/3] Building and running containers...
+#1 [internal] load local bake definitions
+#1 reading from stdin 1.95kB done
+#1 DONE 0.0s
+
+#2 [producer internal] load build definition from Dockerfile
+#2 transferring dockerfile: 902B done
+#2 DONE 0.0s
+
+#3 [gateway internal] load metadata for docker.io/library/ubuntu:22.04
+#3 DONE 0.0s
+
+#4 [router internal] load .dockerignore
+#4 transferring context: 2B done
+#4 DONE 0.0s
+
+#5 [consumer internal] load build context
+#5 DONE 0.0s
+
+#6 [consumer 1/7] FROM docker.io/library/ubuntu:22.04@sha256:0e0a0fc6d18feda9db1590da249ac93e8d5abfea8f4c3c0c849ce512b5ef8982
+#6 resolve docker.io/library/ubuntu:22.04@sha256:0e0a0fc6d18feda9db1590da249ac93e8d5abfea8f4c3c0c849ce512b5ef8982 0.0s done
+#6 resolve docker.io/library/ubuntu:22.04@sha256:0e0a0fc6d18feda9db1590da249ac93e8d5abfea8f4c3c0c849ce512b5ef8982 0.0s done
+#6 DONE 0.0s
+
+#5 [gateway internal] load build context
+#5 transferring context: 32.83kB 0.0s done
+#5 DONE 0.0s
+
+#7 [router 4/7] RUN cp /etc/ndn/nfd.conf.sample /etc/ndn/nfd.conf &&     ndnsec key-gen /localhost/operator | ndnsec cert-install -
+#7 CACHED
+
+#8 [router 2/7] RUN apt-get update &&     apt-get install -y software-properties-common &&     add-apt-repository ppa:named-data/ppa &&     apt-get update &&     apt-get install -y nfd ndn-tools python3 python3-pip iproute2                        build-essential cmake libndn-cxx-dev                        libssl-dev nlohmann-json3-dev pkg-config &&     rm -rf /var/lib/apt/lists/*
+#8 CACHED
+
+#9 [router 3/7] RUN pip3 install python-ndn cryptography
+#9 CACHED
+
+#10 [gateway 5/7] WORKDIR /app
+#10 CACHED
+
+#11 [consumer 6/7] COPY . /app
+#11 DONE 0.0s
+
+#12 [gateway 7/7] RUN cmake . && make
+#12 0.317 -- The CXX compiler identification is GNU 11.4.0
+#12 0.331 -- Detecting CXX compiler ABI info
+#12 0.429 -- Detecting CXX compiler ABI info - done
+#12 0.439 -- Check for working CXX compiler: /usr/bin/c++ - skipped
+#12 0.439 -- Detecting CXX compile features
+#12 0.441 -- Detecting CXX compile features - done
+#12 0.448 -- Found PkgConfig: /usr/bin/pkg-config (found version "0.29.2") 
+#12 0.448 -- Checking for module 'libndn-cxx'
+#12 0.459 --   Found libndn-cxx, version 0.8.1
+#12 0.553 -- Found OpenSSL: /usr/lib/x86_64-linux-gnu/libcrypto.so (found version "3.0.2")  
+#12 0.553 -- Configuring done
+#12 0.563 -- Generating done
+#12 0.564 -- Build files have been written to: /app
+#12 0.609 [ 12%] Building CXX object CMakeFiles/crypto_utils.dir/crypto_utils.cpp.o
+#12 1.065 [ 25%] Linking CXX static library libcrypto_utils.a
+#12 1.092 [ 25%] Built target crypto_utils
+#12 1.110 [ 37%] Building CXX object CMakeFiles/consumer.dir/consumer.cpp.o
+#12 4.657 [ 50%] Linking CXX executable consumer
+#12 4.837 [ 50%] Built target consumer
+#12 4.857 [ 62%] Building CXX object CMakeFiles/gateway.dir/gateway.cpp.o
+#12 8.844 [ 75%] Linking CXX executable gateway
+#12 9.012 [ 75%] Built target gateway
+#12 9.029 [ 87%] Building CXX object CMakeFiles/producer.dir/producer.cpp.o
+#12 12.58 [100%] Linking CXX executable producer
+#12 12.75 [100%] Built target producer
+#12 DONE 12.8s
+
+#13 [consumer] exporting to image
+#13 exporting layers
+#13 exporting layers 0.4s done
+#13 exporting manifest sha256:41b1436876dae83aa26e11ebb64ceb7f4ae79cf51780929378fae24c191505c8
+#13 exporting manifest sha256:41b1436876dae83aa26e11ebb64ceb7f4ae79cf51780929378fae24c191505c8 1.9s done
+#13 exporting config sha256:b780feac70c8f3645ee7e23ea7a275c08c01ecf8eddb5eaa99d333020afa0f1e
+#13 exporting config sha256:b780feac70c8f3645ee7e23ea7a275c08c01ecf8eddb5eaa99d333020afa0f1e 1.5s done
+#13 exporting attestation manifest sha256:c4af78365d9faa8716c67c8065120b45aa41b0ee6d131722525702c3460a47ca
+#13 exporting attestation manifest sha256:c4af78365d9faa8716c67c8065120b45aa41b0ee6d131722525702c3460a47ca 0.2s done
+#13 exporting manifest list sha256:9e556ed31819523d980eb1dc0d16443b0e10f3bb621a79739243a74db826b5b9
+#13 exporting manifest list sha256:9e556ed31819523d980eb1dc0d16443b0e10f3bb621a79739243a74db826b5b9 0.1s done
+#13 naming to docker.io/library/proposed_method-consumer:latest
+#13 naming to docker.io/library/proposed_method-consumer:latest 0.0s done
+#13 unpacking to docker.io/library/proposed_method-consumer:latest
+#13 unpacking to docker.io/library/proposed_method-consumer:latest 0.2s done
+#13 DONE 4.4s
+
+#14 [router] exporting to image
+#14 exporting layers 0.4s done
+#14 exporting manifest sha256:4997a88642823b1410175366268ea75c6ca1aeda62b5756a30b81ac039278342 1.8s done
+#14 exporting config sha256:e9b402af85c4345723ab9d5e50b4e32505b28e23341f408596e841996156c034 1.5s done
+#14 exporting attestation manifest sha256:5a0cd7d7aae3dbdb42498f531820242758814a73af6f6dfd66048db2139dd38e 0.2s done
+#14 exporting manifest list sha256:395e97c5bbf72e4e82ac929742f7377da3c659d549adfede276865683b209291 0.1s done
+#14 naming to docker.io/library/proposed_method-router:latest 0.0s done
+#14 unpacking to docker.io/library/proposed_method-router:latest 0.2s done
+#14 DONE 4.5s
+
+#15 [gateway] exporting to image
+#15 exporting layers 0.4s done
+#15 exporting manifest sha256:903d4fb5fff8199c662784e851798c2e98c640bd16e847605a19676c5af12eed 1.8s done
+#15 exporting config sha256:3ff2b3aec3f3da212d5fee95e424ec7c528dbb3361990b6045f0bcf1c92c2ded 1.5s done
+#15 exporting attestation manifest sha256:e2589838893e87d895c4e504d8a7f28b9bc02f5ec987c3ca577f7f641d98e61d 0.2s done
+#15 exporting manifest list sha256:7f62408d9bbd12a11aa85a6f034d300afdf74838381e8ae5c86bbc22bf144867 0.1s done
+#15 naming to docker.io/library/proposed_method-gateway:latest 0.0s done
+#15 unpacking to docker.io/library/proposed_method-gateway:latest 0.2s done
+#15 DONE 4.5s
+
+#16 [producer] exporting to image
+#16 exporting layers 0.4s done
+#16 exporting manifest sha256:dde790a310259530d3e39912e90f13704b3a16ce061a84378dc30a91de68aacb 1.8s done
+#16 exporting config sha256:b40156ea91a58dd3d22572aca5cb500df7d7dc23b46bfad94fa7d1276269c979 1.5s done
+#16 exporting attestation manifest sha256:c7535256d5e5a9d4adfe857748c1b02a107ada708775332de6e38d1e724e91a0 0.2s done
+#16 exporting manifest list sha256:1f5cf77b9ea01f640b48f9a0ddf241ef727726f8ccce9af10005f1699056b5a2 0.1s done
+#16 naming to docker.io/library/proposed_method-producer:latest 0.0s done
+#16 unpacking to docker.io/library/proposed_method-producer:latest 0.2s done
+#16 DONE 4.5s
+
+#17 [consumer] resolving provenance for metadata file
+#17 ...
+
+#18 [gateway] resolving provenance for metadata file
+#18 DONE 0.2s
+
+#19 [producer] resolving provenance for metadata file
+#19 DONE 0.4s
+
+#17 [consumer] resolving provenance for metadata file
+#17 DONE 0.4s
+
+#20 [router] resolving provenance for metadata file
+#20 DONE 0.4s
+Attaching to consumer, gateway, producer, router
+producer  | NFD version 22.12-33-ge277f8b9 starting
+producer  | Built with GNU C++ version 11.4.0, with GNU libstdc++ version 20230528, with Boost version 1.74.0, with libpcap version 1.10.1 (with TPACKET_V3), with WebSocket++ version 0.8.1, with ndn-cxx version 0.8.1-43-g49e1e87b
+consumer  | NFD version 22.12-33-ge277f8b9 starting
+consumer  | Built with GNU C++ version 11.4.0, with GNU libstdc++ version 20230528, with Boost version 1.74.0, with libpcap version 1.10.1 (with TPACKET_V3), with WebSocket++ version 0.8.1, with ndn-cxx version 0.8.1-43-g49e1e87b
+producer  | 1783416181.241904  INFO: [nfd.FaceTable] Added face id=255 remote=null:// local=null://
+producer  | 1783416181.241978  INFO: [nfd.FaceTable] Added face id=254 remote=contentstore:// local=contentstore://
+producer  | 1783416181.242025  INFO: [nfd.CsPolicy] setLimit 10
+producer  | 1783416181.242060  INFO: [nfd.StrategyChoice] setDefaultStrategy /localhost/nfd/strategy/best-route/v=5
+producer  | 1783416181.242102  INFO: [nfd.FaceTable] Added face id=1 remote=internal:// local=internal://
+consumer  | 1783416181.242283  INFO: [nfd.FaceTable] Added face id=255 remote=null:// local=null://
+consumer  | 1783416181.242352  INFO: [nfd.FaceTable] Added face id=254 remote=contentstore:// local=contentstore://
+consumer  | 1783416181.242439  INFO: [nfd.CsPolicy] setLimit 10
+consumer  | 1783416181.242483  INFO: [nfd.StrategyChoice] setDefaultStrategy /localhost/nfd/strategy/best-route/v=5
+consumer  | 1783416181.242576  INFO: [nfd.FaceTable] Added face id=1 remote=internal:// local=internal://
+producer  | 1783416181.242642  WARN: [nfd.CommandAuthenticator] 'certfile any' is intended for demo purposes only and SHOULD NOT be used in production environments
+consumer  | 1783416181.243005  WARN: [nfd.CommandAuthenticator] 'certfile any' is intended for demo purposes only and SHOULD NOT be used in production environments
+consumer  | 1783416181.243433  INFO: [nfd.StrategyChoice] changeStrategy(/ndn/broadcast) /localhost/nfd/strategy/best-route/v=5 -> /localhost/nfd/strategy/multicast/v=4
+consumer  | 1783416181.243490  INFO: [nfd.StrategyChoice] changeStrategy(/localhost) /localhost/nfd/strategy/best-route/v=5 -> /localhost/nfd/strategy/multicast/v=4
+consumer  | 1783416181.243510  INFO: [nfd.StrategyChoice] changeStrategy(/localhost/nfd) /localhost/nfd/strategy/multicast/v=4 -> /localhost/nfd/strategy/best-route/v=5
+consumer  | 1783416181.243523  INFO: [nfd.CsPolicy] setLimit 65536
+consumer  | 1783416181.243528  INFO: [nfd.CsPolicy] setLimit 65536
+consumer  | 1783416181.243548  INFO: [nfd.EthernetFactory] enabling multicast on 01:00:5e:00:17:aa
+consumer  | 1783416181.243657  INFO: [nfd.TcpChannel] [tcp4://0.0.0.0:6363] Creating channel
+consumer  | 1783416181.243806  INFO: [nfd.TcpChannel] [tcp6://[::]:6363] Creating channel
+producer  | 1783416181.242933  INFO: [nfd.StrategyChoice] changeStrategy(/ndn/broadcast) /localhost/nfd/strategy/best-route/v=5 -> /localhost/nfd/strategy/multicast/v=4
+producer  | 1783416181.242966  INFO: [nfd.StrategyChoice] changeStrategy(/localhost) /localhost/nfd/strategy/best-route/v=5 -> /localhost/nfd/strategy/multicast/v=4
+producer  | 1783416181.242980  INFO: [nfd.StrategyChoice] changeStrategy(/localhost/nfd) /localhost/nfd/strategy/multicast/v=4 -> /localhost/nfd/strategy/best-route/v=5
+producer  | 1783416181.242989  INFO: [nfd.CsPolicy] setLimit 65536
+producer  | 1783416181.242994  INFO: [nfd.CsPolicy] setLimit 65536
+producer  | 1783416181.243008  INFO: [nfd.EthernetFactory] enabling multicast on 01:00:5e:00:17:aa
+producer  | 1783416181.243044  INFO: [nfd.TcpChannel] [tcp4://0.0.0.0:6363] Creating channel
+producer  | 1783416181.243187  INFO: [nfd.TcpChannel] [tcp6://[::]:6363] Creating channel
+producer  | 1783416181.243295  INFO: [nfd.UdpChannel] [udp4://0.0.0.0:6363] Creating channel
+producer  | 1783416181.243355  INFO: [nfd.UdpChannel] [udp6://[::]:6363] Creating channel
+producer  | 1783416181.243374  INFO: [nfd.UdpFactory] enabling multicast on 224.0.23.170:56363
+producer  | 1783416181.243388  INFO: [nfd.UdpFactory] enabling multicast on [ff02::1234]:56363
+producer  | 1783416181.243432  INFO: [nfd.UnixStreamChannel] [unix:///run/nfd.sock] Creating channel
+producer  | 1783416181.243998  INFO: [nfd.WebSocketChannel] [ws://0.0.0.0:9696] Creating channel
+producer  | 1783416181.244097  INFO: [nfd.WebSocketChannel] [ws://[::]:9696] Creating channel
+producer  | 1783416181.244172  WARN: [nfd.CommandAuthenticator] 'certfile any' is intended for demo purposes only and SHOULD NOT be used in production environments
+producer  | 1783416181.244213  INFO: [nfd.CommandAuthenticator] authorize module=faces signer=any
+producer  | 1783416181.244220  INFO: [nfd.CommandAuthenticator] authorize module=fib signer=any
+producer  | 1783416181.244223  INFO: [nfd.CommandAuthenticator] authorize module=cs signer=any
+producer  | 1783416181.244226  INFO: [nfd.CommandAuthenticator] authorize module=strategy-choice signer=any
+consumer  | 1783416181.243879  INFO: [nfd.UdpChannel] [udp4://0.0.0.0:6363] Creating channel
+consumer  | 1783416181.243980  INFO: [nfd.UdpChannel] [udp6://[::]:6363] Creating channel
+consumer  | 1783416181.244031  INFO: [nfd.UdpFactory] enabling multicast on 224.0.23.170:56363
+consumer  | 1783416181.244046  INFO: [nfd.UdpFactory] enabling multicast on [ff02::1234]:56363
+consumer  | 1783416181.244085  INFO: [nfd.UnixStreamChannel] [unix:///run/nfd.sock] Creating channel
+consumer  | 1783416181.244528  INFO: [nfd.WebSocketChannel] [ws://0.0.0.0:9696] Creating channel
+consumer  | 1783416181.244666  INFO: [nfd.WebSocketChannel] [ws://[::]:9696] Creating channel
+consumer  | 1783416181.244814  WARN: [nfd.CommandAuthenticator] 'certfile any' is intended for demo purposes only and SHOULD NOT be used in production environments
+consumer  | 1783416181.244863  INFO: [nfd.CommandAuthenticator] authorize module=faces signer=any
+consumer  | 1783416181.244871  INFO: [nfd.CommandAuthenticator] authorize module=fib signer=any
+consumer  | 1783416181.244874  INFO: [nfd.CommandAuthenticator] authorize module=cs signer=any
+consumer  | 1783416181.244878  INFO: [nfd.CommandAuthenticator] authorize module=strategy-choice signer=any
+producer  | 1783416181.244970  INFO: [nfd.EthernetChannel] [dev://eth0] Creating channel
+consumer  | 1783416181.245526  INFO: [nfd.EthernetChannel] [dev://eth0] Creating channel
+consumer  | 1783416181.251694  INFO: [nfd.RibManager] Start monitoring face create/destroy events
+producer  | 1783416181.252156  INFO: [nfd.RibManager] Start monitoring face create/destroy events
+gateway   | NFD version 22.12-33-ge277f8b9 starting
+gateway   | Built with GNU C++ version 11.4.0, with GNU libstdc++ version 20230528, with Boost version 1.74.0, with libpcap version 1.10.1 (with TPACKET_V3), with WebSocket++ version 0.8.1, with ndn-cxx version 0.8.1-43-g49e1e87b
+router    | NFD version 22.12-33-ge277f8b9 starting
+router    | Built with GNU C++ version 11.4.0, with GNU libstdc++ version 20230528, with Boost version 1.74.0, with libpcap version 1.10.1 (with TPACKET_V3), with WebSocket++ version 0.8.1, with ndn-cxx version 0.8.1-43-g49e1e87b
+gateway   | 1783416181.266182  INFO: [nfd.FaceTable] Added face id=255 remote=null:// local=null://
+gateway   | 1783416181.266239  INFO: [nfd.FaceTable] Added face id=254 remote=contentstore:// local=contentstore://
+gateway   | 1783416181.266271  INFO: [nfd.CsPolicy] setLimit 10
+gateway   | 1783416181.266295  INFO: [nfd.StrategyChoice] setDefaultStrategy /localhost/nfd/strategy/best-route/v=5
+gateway   | 1783416181.266325  INFO: [nfd.FaceTable] Added face id=1 remote=internal:// local=internal://
+router    | 1783416181.266127  INFO: [nfd.FaceTable] Added face id=255 remote=null:// local=null://
+router    | 1783416181.266177  INFO: [nfd.FaceTable] Added face id=254 remote=contentstore:// local=contentstore://
+router    | 1783416181.266220  INFO: [nfd.CsPolicy] setLimit 10
+router    | 1783416181.266263  INFO: [nfd.StrategyChoice] setDefaultStrategy /localhost/nfd/strategy/best-route/v=5
+router    | 1783416181.266297  INFO: [nfd.FaceTable] Added face id=1 remote=internal:// local=internal://
+gateway   | 1783416181.266728  WARN: [nfd.CommandAuthenticator] 'certfile any' is intended for demo purposes only and SHOULD NOT be used in production environments
+gateway   | 1783416181.266956  INFO: [nfd.StrategyChoice] changeStrategy(/ndn/broadcast) /localhost/nfd/strategy/best-route/v=5 -> /localhost/nfd/strategy/multicast/v=4
+gateway   | 1783416181.267004  INFO: [nfd.StrategyChoice] changeStrategy(/localhost) /localhost/nfd/strategy/best-route/v=5 -> /localhost/nfd/strategy/multicast/v=4
+gateway   | 1783416181.267019  INFO: [nfd.StrategyChoice] changeStrategy(/localhost/nfd) /localhost/nfd/strategy/multicast/v=4 -> /localhost/nfd/strategy/best-route/v=5
+gateway   | 1783416181.267028  INFO: [nfd.CsPolicy] setLimit 65536
+gateway   | 1783416181.267032  INFO: [nfd.CsPolicy] setLimit 65536
+gateway   | 1783416181.267046  INFO: [nfd.EthernetFactory] enabling multicast on 01:00:5e:00:17:aa
+gateway   | 1783416181.267075  INFO: [nfd.TcpChannel] [tcp4://0.0.0.0:6363] Creating channel
+router    | 1783416181.267508  WARN: [nfd.CommandAuthenticator] 'certfile any' is intended for demo purposes only and SHOULD NOT be used in production environments
+gateway   | 1783416181.267193  INFO: [nfd.TcpChannel] [tcp6://[::]:6363] Creating channel
+gateway   | 1783416181.267270  INFO: [nfd.UdpChannel] [udp4://0.0.0.0:6363] Creating channel
+gateway   | 1783416181.267294  INFO: [nfd.UdpChannel] [udp6://[::]:6363] Creating channel
+gateway   | 1783416181.267309  INFO: [nfd.UdpFactory] enabling multicast on 224.0.23.170:56363
+gateway   | 1783416181.267319  INFO: [nfd.UdpFactory] enabling multicast on [ff02::1234]:56363
+gateway   | 1783416181.267360  INFO: [nfd.UnixStreamChannel] [unix:///run/nfd.sock] Creating channel
+router    | 1783416181.268307  INFO: [nfd.StrategyChoice] changeStrategy(/ndn/broadcast) /localhost/nfd/strategy/best-route/v=5 -> /localhost/nfd/strategy/multicast/v=4
+router    | 1783416181.268365  INFO: [nfd.StrategyChoice] changeStrategy(/localhost) /localhost/nfd/strategy/best-route/v=5 -> /localhost/nfd/strategy/multicast/v=4
+router    | 1783416181.268378  INFO: [nfd.StrategyChoice] changeStrategy(/localhost/nfd) /localhost/nfd/strategy/multicast/v=4 -> /localhost/nfd/strategy/best-route/v=5
+router    | 1783416181.268388  INFO: [nfd.CsPolicy] setLimit 65536
+router    | 1783416181.268392  INFO: [nfd.CsPolicy] setLimit 65536
+router    | 1783416181.268412  INFO: [nfd.EthernetFactory] enabling multicast on 01:00:5e:00:17:aa
+router    | 1783416181.268451  INFO: [nfd.TcpChannel] [tcp4://0.0.0.0:6363] Creating channel
+router    | 1783416181.268544  INFO: [nfd.TcpChannel] [tcp6://[::]:6363] Creating channel
+gateway   | 1783416181.268000  INFO: [nfd.WebSocketChannel] [ws://0.0.0.0:9696] Creating channel
+gateway   | 1783416181.268136  INFO: [nfd.WebSocketChannel] [ws://[::]:9696] Creating channel
+gateway   | 1783416181.268233  WARN: [nfd.CommandAuthenticator] 'certfile any' is intended for demo purposes only and SHOULD NOT be used in production environments
+gateway   | 1783416181.268245  INFO: [nfd.CommandAuthenticator] authorize module=faces signer=any
+gateway   | 1783416181.268249  INFO: [nfd.CommandAuthenticator] authorize module=fib signer=any
+gateway   | 1783416181.268252  INFO: [nfd.CommandAuthenticator] authorize module=cs signer=any
+gateway   | 1783416181.268256  INFO: [nfd.CommandAuthenticator] authorize module=strategy-choice signer=any
+gateway   | 1783416181.268865  INFO: [nfd.EthernetChannel] [dev://eth0] Creating channel
+router    | 1783416181.268625  INFO: [nfd.UdpChannel] [udp4://0.0.0.0:6363] Creating channel
+router    | 1783416181.268670  INFO: [nfd.UdpChannel] [udp6://[::]:6363] Creating channel
+router    | 1783416181.268689  INFO: [nfd.UdpFactory] enabling multicast on 224.0.23.170:56363
+router    | 1783416181.268702  INFO: [nfd.UdpFactory] enabling multicast on [ff02::1234]:56363
+router    | 1783416181.268737  INFO: [nfd.UnixStreamChannel] [unix:///run/nfd.sock] Creating channel
+router    | 1783416181.269566  INFO: [nfd.WebSocketChannel] [ws://0.0.0.0:9696] Creating channel
+router    | 1783416181.269734  INFO: [nfd.WebSocketChannel] [ws://[::]:9696] Creating channel
+router    | 1783416181.269820  WARN: [nfd.CommandAuthenticator] 'certfile any' is intended for demo purposes only and SHOULD NOT be used in production environments
+router    | 1783416181.269834  INFO: [nfd.CommandAuthenticator] authorize module=faces signer=any
+router    | 1783416181.269837  INFO: [nfd.CommandAuthenticator] authorize module=fib signer=any
+router    | 1783416181.269838  INFO: [nfd.CommandAuthenticator] authorize module=cs signer=any
+router    | 1783416181.269841  INFO: [nfd.CommandAuthenticator] authorize module=strategy-choice signer=any
+router    | 1783416181.270580  INFO: [nfd.EthernetChannel] [dev://eth0] Creating channel
+gateway   | 1783416181.275011  INFO: [nfd.RibManager] Start monitoring face create/destroy events
+router    | 1783416181.276021  INFO: [nfd.RibManager] Start monitoring face create/destroy events
+consumer  | 1783416181.283043  INFO: [nfd.FaceTable] Added face id=256 remote=ether://[01:00:5e:00:17:aa] local=dev://eth0
+producer  | 1783416181.283216  INFO: [nfd.FaceTable] Added face id=256 remote=ether://[01:00:5e:00:17:aa] local=dev://eth0
+producer  | 1783416181.285722  INFO: [nfd.FaceTable] Added face id=257 remote=fd://28 local=unix:///run/nfd.sock
+producer  | 1783416181.286054  INFO: [nfd.FaceTable] Added face id=258 remote=udp4://224.0.23.170:56363 local=udp4://172.20.0.2:54013
+consumer  | 1783416181.286577  INFO: [nfd.FaceTable] Added face id=257 remote=fd://28 local=unix:///run/nfd.sock
+consumer  | 1783416181.286927  INFO: [nfd.FaceTable] Added face id=258 remote=udp4://224.0.23.170:56363 local=udp4://172.19.0.2:58422
+router    | 1783416181.315251  INFO: [nfd.FaceTable] Added face id=256 remote=ether://[01:00:5e:00:17:aa] local=dev://eth0
+gateway   | 1783416181.315251  INFO: [nfd.FaceTable] Added face id=256 remote=ether://[01:00:5e:00:17:aa] local=dev://eth0
+router    | 1783416181.318113  INFO: [nfd.EthernetChannel] [dev://eth1] Creating channel
+gateway   | 1783416181.318113  INFO: [nfd.EthernetChannel] [dev://eth1] Creating channel
+gateway   | 1783416181.359806  INFO: [nfd.FaceTable] Added face id=257 remote=ether://[01:00:5e:00:17:aa] local=dev://eth1
+router    | 1783416181.359868  INFO: [nfd.FaceTable] Added face id=257 remote=ether://[01:00:5e:00:17:aa] local=dev://eth1
+router    | 1783416181.360887  INFO: [nfd.FaceTable] Added face id=258 remote=fd://34 local=unix:///run/nfd.sock
+gateway   | 1783416181.360879  INFO: [nfd.FaceTable] Added face id=258 remote=fd://34 local=unix:///run/nfd.sock
+gateway   | 1783416181.361508  INFO: [nfd.FaceTable] Added face id=259 remote=udp4://224.0.23.170:56363 local=udp4://172.18.0.2:36067
+gateway   | 1783416181.361848  INFO: [nfd.FaceTable] Added face id=260 remote=udp4://224.0.23.170:56363 local=udp4://172.19.0.3:44100
+router    | 1783416181.362017  INFO: [nfd.FaceTable] Added face id=259 remote=udp4://224.0.23.170:56363 local=udp4://172.20.0.3:45305
+router    | 1783416181.362944  INFO: [nfd.FaceTable] Added face id=260 remote=udp4://224.0.23.170:56363 local=udp4://172.18.0.3:45762
+
+[Kproducer exited with code 137
+
+[Kconsumer exited with code 137
+
+[Krouter exited with code 137
+
+[Kgateway exited with code 137
+[2/3] Extracting and sorting logs...
+[3/3] Displaying time-ordered logs:
+
+------------------------------------------------------------------------
+------------------------------------------------------------------------
+
+=========================================
+ Evaluation Complete! (Logs are also saved in 'sorted_logs.txt')
+=========================================
+
+>>> UPLOAD COMPLETION TIME RESULT <<<
+Result not found. Check logs.
+=========================================
+ proposed_method-gateway  Built
+ proposed_method-producer  Built
+ proposed_method-router  Built
+ proposed_method-consumer  Built
+ Network proposed_method_net_gr  Creating
+ Network proposed_method_net_gr  Created
+ Network proposed_method_net_cg  Creating
+ Network proposed_method_net_cg  Created
+ Network proposed_method_net_rp  Creating
+ Network proposed_method_net_rp  Created
+ Container gateway  Creating
+ Container producer  Creating
+ Container router  Creating
+ Container consumer  Creating
+ Container gateway  Created
+ Container router  Created
+ Container consumer  Created
+ Container producer  Created
+[31m[1mAborting on container exit...[0m
+ Container gateway  Stopping
+ Container producer  Stopping
+ Container router  Stopping
+ Container consumer  Stopping
+ Container consumer  Stopped
+ Container producer  Stopped
+ Container router  Stopped
+ Container gateway  Stopped
+
